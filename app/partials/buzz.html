@@ -1,0 +1,52 @@
+<section id="buzz" ng:init="$location = $service('$location')">
+    <div class="row">
+		<span class="one-third column">
+			&lt;angular/&gt; Buzz
+		</span>
+		<span class="one-third column">
+			filter: <input type="text" name="filterText" />
+		</span>
+		<span class="one-third column">
+			user: <input type="text" name="userId" ng:required />
+			<button ng:click="$location.updateHash('/buzz/' + userId)">fetch</button>
+		</span>
+	</div>
+	<ul class="square sixteen columns">
+		<li ng:repeat="item in activities.data.items.$filter(filterText)">
+			<div class="row">
+				<div class="two-thirds column alpha">
+					<img ng:src="{{item.actor.thumbnailUrl}}" class="one column" />
+					<a ng:href="{{item.actor.profileUrl}}">
+						{{item.actor.name}}
+					</a>
+				</div>
+				<div class="one-third column omega">
+					<a ng:href="#{{$location.hashPath}}" ng:click="expandReplies(item)">
+						Replies: {{item.links.replies[0].count}}
+					</a>
+				</div>
+			</div>
+			<div>
+				<p><!-- Content -->
+					{{item.object.content | html}}
+				</p>
+				<div> <!-- Attachments -->
+					<a ng:href="{{attachment.links.enclosure[0].href}}" ng:repeat="attachment in item.object.attachments">
+						<img ng:src="{{attachment.links.preview[0].href}}" />
+					</a>
+				</div>
+			</div>
+			<my:expand expand="item.replies.show"><!-- Replies -->
+				<ul class="square">
+					<li ng:repeat="reply in item.replies.data.items">
+						<img ng:src="{{reply.actor.thumbnailUrl}}" />
+						<a ng:href="{{reply.actor.profileUrl}}">
+							{{reply.actor.name}}
+						</a>:
+						{{reply.content | html}}
+					</li>
+				</ul>
+			</my:expand>
+		</li>
+	</ul>
+</section>
