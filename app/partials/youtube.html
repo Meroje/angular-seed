@@ -1,0 +1,32 @@
+<section id="youtube" ng:init="$location = $service('$location')">
+    <div class="row">
+    	<span class="one-third column">
+			&lt;angular/&gt; Youtube : {{userId}}
+		</span>
+		<span class="two-thirds column">
+			user: <input type="text" name="userId" ng:required />
+			<button ng:click="$location.updateHash('/youtube/' + userId)">fetch</button>
+		</span>
+	</div>
+	<ul class="square sixteen columns">
+		<li ng:repeat="item in data.items">
+			<div class="row">
+				<div class="two-thirds column alpha">
+					<a ng:href="{{item.player.default}}">
+						{{item.title}}
+					</a>
+				</div>
+				<div class="one-third column omega">
+					<a ng:href="http://youtube.com/{{item.uploader}}">
+						Uploader: {{item.uploader}}
+					</a>
+				</div>
+			</div>
+			<div>
+				<p><!-- Content -->
+					{{item.description}}
+				</p>
+			</div>
+		</li>
+	</ul>
+</section>

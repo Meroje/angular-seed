@@ -1,13 +1,21 @@
 <section id="buzz" ng:init="$location = $service('$location')">
     <div class="row">
 		<span class="one-third column">
+<<<<<<< HEAD
 			&lt;angular/&gt; Buzz
+=======
+			&lt;angular/&gt; Buzz : {{userId}}
+>>>>>>> master
 		</span>
 		<span class="one-third column">
 			filter: <input type="text" name="filterText" />
 		</span>
 		<span class="one-third column">
+<<<<<<< HEAD
 			user: <input type="text" name="userId" ng:required />
+=======
+			user: <input type="text" name="userId" ng:required class="two columns" />
+>>>>>>> master
 			<button ng:click="$location.updateHash('/buzz/' + userId)">fetch</button>
 		</span>
 	</div>
