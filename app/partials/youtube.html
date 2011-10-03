@@ -5,11 +5,10 @@
 		</span>
 		<span class="two-thirds column">
 			user: <input type="text" name="userId" ng:required />
-			<button ng:click="$location.updateHash('/youtube/' + userId)">fetch</button>
 		</span>
 	</div>
 	<ul class="square sixteen columns">
-		<li ng:repeat="item in data.items">
+		<li ng:repeat="item in videos.data.items">
 			<div class="row">
 				<div class="two-thirds column alpha">
 					<a ng:href="{{item.player.default}}">
@@ -23,10 +22,19 @@
 				</div>
 			</div>
 			<div>
+                <a ng:href="{{item.player.default}}"><img ng:src="{{item.thumbnail.hqDefault}}"/></a>
 				<p><!-- Content -->
 					{{item.description}}
 				</p>
 			</div>
 		</li>
 	</ul>
+    <script>
+        $('input[name=userId]').keypress(function(e) {
+            var controller = angular.element('section').scope();
+            var userId = $(this).attr('value');
+            if(e.keyCode == 13)
+                controller.$location.updateHash('/youtube/' + userId);
+        });
+    </script>
 </section>

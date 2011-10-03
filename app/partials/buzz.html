@@ -50,9 +50,10 @@
 	</ul>
     <script>
         $('input[name=userId]').keypress(function(e) {
+            var controller = angular.element('section').scope();
             var userId = $(this).attr('value');
             if(e.keyCode == 13)
-                angular.service('$location').updateHash('/buzz/' + userId);
+                controller.$location.updateHash('/buzz/' + userId);
         });
     </script>
 </section>
