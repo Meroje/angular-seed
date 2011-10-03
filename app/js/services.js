@@ -9,13 +9,6 @@ angular.service('myAngularApp', function($route, $location, $window) {
 		template : 'partials/buzz.html',
 		controller : BuzzController
 	});
-<<<<<<< HEAD
-=======
-    $route.when('/youtube/:userId', {
-        template : 'partials/youtube.html',
-		controller : YoutubeController
-	});
->>>>>>> master
 
 	var self = this;
 
@@ -37,12 +30,8 @@ angular
 		.service(
 				'BuzzService',
 				function($resource) {
-<<<<<<< HEAD
 					return $resource(
 							'https://www.googleapis.com/buzz/v1/activities/:userId/:visibility/:activityId/:comments',
-=======
-					return $resource( 'https://www.googleapis.com/buzz/v1/activities/:userId/:visibility/:activityId/:comments',
->>>>>>> master
 							{
 								alt : 'json',
 								callback : 'JSON_CALLBACK'
@@ -63,28 +52,4 @@ angular
 							});
 				}, {
 					$inject : [ '$resource' ]
-<<<<<<< HEAD
-=======
-				});
-                
-angular
-        .service(
-				'YoutubeService',
-				function($resource) {
-					return $resource(	'http://gdata.youtube.com/feeds/api/users/:userId/:type',
-							{
-                                v : 2,
-								alt : 'jsonc',
-								callback : 'JSON_CALLBACK'
-							}, {
-								get : {
-									method : 'JSON',
-                                    params : {
-                                        type : 'uploads'
-                                    }
-								}
-							});
-				}, {
-					$inject : [ '$resource' ]
->>>>>>> master
 				});
